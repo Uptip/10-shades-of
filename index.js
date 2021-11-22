@@ -152,10 +152,10 @@ const run = () => {
       console.log(``);
     }
     console.log(
-      `ℹ️  Usage: node index.js --color COLOR_CODE [--mode hsl|rgb|hex]`,
+      `ℹ️  Usage: node index.js --color COLOR_CODE [--format hsl|rgb|hex]`,
     );
     console.log(`\x1b[2m     e.g. node index.js --color #ea1863`);
-    console.log(`          node index.js --color #ea1863 --output hsl`);
+    console.log(`          node index.js --color #ea1863 --format hsl`);
   }
 };
 
