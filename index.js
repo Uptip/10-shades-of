@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const {
   hexToHsl,
   hslToHex,
@@ -92,6 +93,8 @@ const generatePalette = ({ color, format, shade }) => {
   } = Boolean(shade)
     ? getInputShadeLightessPosition(shade)
     : getColorLightnessPosition([h, s, l]);
+
+  console.log(shade);
 
   const lightnessStepToBlack = l / stepsCountToBlack;
   const lightnessStepToWhite = round((1 - l) / stepsCountToWhite);
