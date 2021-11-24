@@ -44,6 +44,20 @@ const getColorLightnessPosition = ([, , l]) => {
   };
 };
 
+const getInputShadeLightessPosition = lightness => {
+  const closestLightness = lightness;
+  const closestLightnessIndex = lightnesses.indexOf(lightness);
+  const stepsCountToBlack = 11 - closestLightnessIndex;
+  const stepsCountToWhite = closestLightnessIndex + 1;
+
+  return {
+    closestLightness,
+    closestLightnessIndex,
+    stepsCountToBlack,
+    stepsCountToWhite,
+  };
+};
+
 const formatColorArgument = color => {
   if (!Boolean(color)) {
     throw Error('');
@@ -67,7 +81,7 @@ const formatColorArgument = color => {
   return hexToHsl(color);
 };
 
-const generatePalette = ({ color, format }) => {
+const generatePalette = ({ color, format, shade }) => {
   const [h, s, l] = formatColorArgument(color);
 
   const {
@@ -75,7 +89,9 @@ const generatePalette = ({ color, format }) => {
     closestLightnessIndex,
     stepsCountToBlack,
     stepsCountToWhite,
-  } = getColorLightnessPosition([h, s, l]);
+  } = Boolean(shade)
+    ? getInputShadeLightessPosition(shade)
+    : getColorLightnessPosition([h, s, l]);
 
   const lightnessStepToBlack = l / stepsCountToBlack;
   const lightnessStepToWhite = round((1 - l) / stepsCountToWhite);
@@ -139,11 +155,13 @@ const run = () => {
   try {
     const color = getArgument('color');
     const format = getArgument('format') || 'hex';
+    const shade = getArgument('shade');
 
     console.log(
       generatePalette({
         color,
         format,
+        shade,
       }),
     );
   } catch (err) {
@@ -151,11 +169,24 @@ const run = () => {
       console.log(`\x1b[31m⚠️  ${err.message}\x1b[0m`);
       console.log(``);
     }
+    console.log(`ℹ️  Usage:`);
     console.log(
-      `ℹ️  Usage: node index.js --color COLOR_CODE [--format hsl|rgb|hex]`,
+      `node index.js --color COLOR_CODE [--format FORMAT] [--shade SHADE]`,
     );
+    console.log(``);
     console.log(`\x1b[2m     e.g. node index.js --color #ea1863`);
     console.log(`          node index.js --color #ea1863 --format hsl`);
+    console.log(
+      `          node index.js --color #ea1863 --format hsl --shade 400`,
+    );
+    console.log('\x1b[0m');
+    console.log('⚙️  Options:');
+    console.log('    --color: Input color (opaque hexadecimal value)');
+    console.log('');
+    console.log('    --format: Output format (hex, hsl, rgb)');
+    console.log('');
+    console.log('    --shade: Input shade. This will be the output shade of ');
+    console.log('             the input color. (50 to 900)');
   }
 };
 

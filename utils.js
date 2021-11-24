@@ -9,6 +9,11 @@ const getArgument = (argName, isOptional = true) => {
   if ((argIndex === -1 || !Boolean(argValue)) && !isOptional) {
     throw Error('Missing argument');
   }
+
+  if (!isNaN(Number(argValue))) {
+    return Number(argValue);
+  }
+
   return argValue;
 };
 
