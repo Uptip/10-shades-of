@@ -173,7 +173,7 @@ const run = () => {
     console.log('');
     console.log('ℹ️  Usage:');
     console.log(
-      'node index.js [--color] COLOR_CODE [--format FORMAT] [--shade SHADE]',
+      'npx 10-shades-of [--color] COLOR_CODE [--format FORMAT] [--shade SHADE]',
     );
     console.log('');
     console.log('\x1b[2m     e.g. npx 10-shades-of #ea1863');
@@ -183,13 +183,13 @@ const run = () => {
     console.log('\x1b[0m');
     console.log('⚙️  Options:');
     console.log(
-      '    --color: (or first argument) Input color — opaque hexadecimal value',
+      '    --color:  (or first argument) Input color — opaque hexadecimal value',
     );
     console.log('');
     console.log('    --format: Output format (hex, hsl, rgb)');
     console.log('');
-    console.log('    --shade: Input shade. This will be the output shade of');
-    console.log('             the input color. (50 to 900)');
+    console.log('    --shade:  Input shade. This will be the output shade of');
+    console.log('              the input color. (50 to 900)');
   }
 };
 
