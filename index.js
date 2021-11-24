@@ -65,7 +65,7 @@ const formatColorArgument = color => {
   }
 
   if (/^#([\da-fA-F]{4}){1,2}$/.test(color)) {
-    throw Error(`Please provide an opaque entry value`);
+    throw Error('Please provide an opaque entry value');
   }
 
   if (!/^#([\da-fA-F]{3}){1,2}$/.test(color)) {
@@ -167,22 +167,24 @@ const run = () => {
     );
   } catch (err) {
     if (Boolean(err.message)) {
-      console.log(`\x1b[31m⚠️  ${err.message}\x1b[0m`);
-      console.log(``);
+      console.log('\x1b[31m⚠️  ${err.message}\x1b[0m');
+      console.log('');
     }
-    console.log(`ℹ️  Usage:`);
+    console.log('');
+    console.log('ℹ️  Usage:');
     console.log(
-      `node index.js --color COLOR_CODE [--format FORMAT] [--shade SHADE]`,
+      'node index.js [--color] COLOR_CODE [--format FORMAT] [--shade SHADE]',
     );
-    console.log(``);
-    console.log(`\x1b[2m     e.g. node index.js --color #ea1863`);
-    console.log(`          node index.js --color #ea1863 --format hsl`);
-    console.log(
-      `          node index.js --color #ea1863 --format hsl --shade 400`,
-    );
+    console.log('');
+    console.log('\x1b[2m     e.g. npx 10-shades-of #ea1863');
+    console.log('          npx 10-shades-of --color #ea1863');
+    console.log('          npx 10-shades-of #ea1863 --format hsl');
+    console.log(`          npx 10-shades-of #ea1863 --format hsl --shade 400`);
     console.log('\x1b[0m');
     console.log('⚙️  Options:');
-    console.log('    --color: Input color (opaque hexadecimal value)');
+    console.log(
+      '    --color: (or first argument) Input color — opaque hexadecimal value',
+    );
     console.log('');
     console.log('    --format: Output format (hex, hsl, rgb)');
     console.log('');
