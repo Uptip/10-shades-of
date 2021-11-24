@@ -6,6 +6,10 @@ const getArgument = (argName, isOptional = true) => {
   const argIndex = args.indexOf(`--${argName}`);
   const argValue = args[argIndex + 1];
 
+  if (argIndex === -1 && argName === 'color') {
+    return args[0];
+  }
+
   if ((argIndex === -1 || !Boolean(argValue)) && !isOptional) {
     throw Error('Missing argument');
   }
