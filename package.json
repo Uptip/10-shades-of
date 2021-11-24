@@ -1,0 +1,16 @@
+{
+  "name": "10-shades-of",
+  "version": "1.0.0",
+  "description": "Get 10 shades of any hex color",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uptip/10-shades-of.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Uptip/10-shades-of/issues"
+  },
+  "homepage": "https://github.com/Uptip/10-shades-of#readme"
+}
