@@ -185,7 +185,7 @@ const run = () => {
     console.log('');
     console.log('    --format: Output format (hex, hsl, rgb)');
     console.log('');
-    console.log('    --shade: Input shade. This will be the output shade of ');
+    console.log('    --shade: Input shade. This will be the output shade of');
     console.log('             the input color. (50 to 900)');
   }
 };
